@@ -1,4 +1,11 @@
 <?php
+header('Content-Type: application/json');
+
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: http://127.0.0.1:5500');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
+
 // Include configuration file
 require_once '../config/config.php';
 // What: Includes the configuration file that contains database settings and other configurations.
