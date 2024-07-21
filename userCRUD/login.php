@@ -18,21 +18,24 @@ if ($email === null || $password === null) {
     exit();
 }
 
+$pdo = getDBConnection(); // Ensure you have the PDO connection
 
-$sql = "SELECT * FROM Users WHERE email = :email";
+$sql = "SELECT * FROM users WHERE email = :email"; // Make sure table name is in lower case
 $stmt = $pdo->prepare($sql);
 $stmt->execute([':email' => $email]);
 
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($user && password_verify($password, $user['password'])) {
-    
+    // Set session variables
+    $_SESSION['user_id'] = $user['user_id'];
     $_SESSION['user_type'] = $user['user_type'];
     $_SESSION['logged_in'] = true;
 
     echo json_encode([
         "message" => "Login successful!",
-        "user_type" => $user['user_type'] 
+        "user_type" => $user['user_type'],
+        "user_id" => $user['user_id']
     ]);
 } else {
     echo json_encode(["error" => "Invalid email or password."]);
