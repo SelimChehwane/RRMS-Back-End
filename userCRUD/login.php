@@ -6,7 +6,7 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET');
 header('Access-Control-Allow-Headers: Content-Type');
 
-require("/xampp/htdocs/api/conn.php");
+require_once '../config/config.php';
 
 file_put_contents('php://stderr', print_r($_GET, true)); 
 

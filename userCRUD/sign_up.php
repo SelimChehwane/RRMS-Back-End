@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit();
 }
 
-require("/xampp/htdocs/api/conn.php");
+require_once '../config/config.php';
 
 
 $data = json_decode(file_get_contents("php://input"), true);
