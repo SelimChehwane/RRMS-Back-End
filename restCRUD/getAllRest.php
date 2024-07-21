@@ -4,7 +4,7 @@ require_once '../config/config.php';
 
 $pdo = getDBConnection();
 
-require_once '../Models/restaurantModel.php';
+require_once '../Models/restModel.php';
 
 $restaurantModel = new Restaurant($pdo);
 
